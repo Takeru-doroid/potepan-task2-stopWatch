@@ -27,8 +27,8 @@ $(document).ready(function(){
     
     msec = 0;
     sec  = 0;
-    tsec = 0;
-    min  = 0;
+    min = 0;
+    hour  = 0;
     
     //0 : 0 : 0 : 0にリセットする
     $("#stop-watch").html("0 : 0 : 0 : 0");
@@ -43,8 +43,8 @@ $(document).ready(function(){
 
 msec = 0;
 sec  = 0;
-tsec = 0;
-min  = 0;
+min = 0;
+hour  = 0;
 
 function countUp(){
   //ミリ秒を始める
@@ -56,26 +56,26 @@ function countUp(){
     sec += 1;
   }
   
-  //secが9以上になったら、tsecが+1になるようにする
-  if(sec > 9){
+  //secが59以上になったら、minが+1になるようにする
+  if(sec > 59){
     sec   = 0;
-    tsec += 1;
+    min += 1;
   }
   
-  //tsecが9以上になったら、minが+1になるようにする
-  if(tsec > 9){
-    tsec  = 0;
-    min  += 1;
+  //minが59以上になったら、hourが+1になるようにする
+  if(min > 59){
+    min  = 0;
+    hour  += 1;
   }
   
   //各時間を代入
   msecNumber = msec;
   secNumber  = sec;
-  tsecNumber = tsec;
-  minNumber  = min;
+  minNumber = min;
+  hourNumber  = hour;
   
   
-  $("#stop-watch").html(minNumber + " : " + tsecNumber + " : " + secNumber + " : " + msecNumber);
+  $("#stop-watch").html(hourNumber + " : " + minNumber + " : " + secNumber + " : " + msecNumber);
   
 }
 
